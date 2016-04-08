@@ -1,5 +1,5 @@
 // Default SourceJS engine configuration
-
+var pathToUser = process.env.SOURCEJS_PATH_TO_USER || 'user';
 module.exports = {
 
     // Restart the app after changing core (back-end) options
@@ -18,7 +18,7 @@ module.exports = {
             contextOptionsFile: 'sourcejs-options.js',
 
             // Path to your SourceJS configuration folder
-            pathToUser: 'user',
+            pathToUser: pathToUser,
 
             // Name of spec meta info file
             infoFile: 'info.json',

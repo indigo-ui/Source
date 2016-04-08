@@ -85,9 +85,6 @@ module.exports = function(basePath, _silent){
     var userSettingsFile = path.join(pathToUser, 'options.js');
     var userLocalSettingsFile = path.join(pathToUser, 'local-options.js');
 
-    // Adding assets npm plugin list to options
-    utils.extendOptions(mergedOptions, configUtils.prepareClientNpmPlugins(pathToUser));
-
     // If user settings file is present, override core settings
     if(fs.existsSync(userSettingsFile)) {
         utils.extendOptions(mergedOptions, legacyOptionsChecker(utils.requireUncached(userSettingsFile)), 'options.js');
@@ -97,6 +94,10 @@ module.exports = function(basePath, _silent){
     if(fs.existsSync(userLocalSettingsFile)) {
         utils.extendOptions(mergedOptions, legacyOptionsChecker(utils.requireUncached(userLocalSettingsFile)), 'local-options.js');
     }
+
+    var pathToModules = mergedOptions.core.userDependenciesFolder = mergedOptions.core.userDependenciesFolder || 'node_modules';
+    // Adding assets npm plugin list to options
+    utils.extendOptions(mergedOptions, configUtils.prepareClientNpmPlugins(pathToModules));
 
     return mergedOptions;
 };

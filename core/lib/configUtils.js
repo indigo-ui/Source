@@ -14,12 +14,11 @@ var coreOptionsInContextWarnOnce = [];
 /**
  * Searches sourcejs-plugins in node_modules of specified folder
  *
- * @param {String} pathToUser - path to user folder, where to check node_modules
+ * @param {String} pathToModules - path to user node_modules
  *
  * @returns {Object} Returns configuration object with listed sourcejs-plugins
  */
-module.exports.prepareClientNpmPlugins = function(pathToUser) {
-    var pathToModules = path.join(pathToUser, 'node_modules');
+module.exports.prepareClientNpmPlugins = function(pathToModules) {
     var clientNpmPlugins = {};
     clientNpmPlugins.assets = {};
     clientNpmPlugins.assets.npmPluginsEnabled = {};
