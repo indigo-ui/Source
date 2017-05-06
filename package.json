@@ -36,7 +36,7 @@
     "grunt-contrib-less": "~0.11.0",
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-jsdoc": "^0.5.7",
+    "grunt-jsdoc": "^2.1.0",
     "grunt-newer": "~0.6.1",
     "gulp-watch": "^4.1.1",
     "load-grunt-parent-tasks": "^0.1.1",
