@@ -7,22 +7,22 @@ global.pathToApp = pathToApp;
 
 var loadOptions = require('./core/loadOptions');
 
-function getLoaderPackageName() {
-    var packageName;
+function loadGruntTasks(grunt) {
     var isSubPackage = parentFolderName === 'node_modules';
     if (isSubPackage) {
-        packageName = 'load-grunt-parent-tasks';
+        require('load-grunt-parent-tasks')(grunt, {
+            scope: 'dependencies'
+        });
     } else {
-        packageName = 'load-grunt-tasks';
+        require('load-grunt-tasks')(grunt);
     }
-    return packageName;
 }
 
 module.exports = function(grunt) {
     var appPort = grunt.option('app-port') || 8080;
 
     // load all grunt tasks matching the `grunt-*` pattern
-    require(getLoaderPackageName())(grunt);
+    loadGruntTasks(grunt);
 
     // measuring processing time
     require('time-grunt')(grunt);
